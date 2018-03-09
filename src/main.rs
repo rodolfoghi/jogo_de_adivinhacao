@@ -1,7 +1,14 @@
+extern crate rand;
+
 use std::io;
+use rand::Rng;
 
 fn main() {
     println!("Adivinhe o número!");
+
+    let numero_secreto = rand::thread_rng().gen_range(1, 101);
+
+    println!("O número secreto é {}", numero_secreto);
 
     println!("Digite o seu palpite.");
 
