@@ -1,6 +1,7 @@
 extern crate rand;
 
 use std::io;
+use std::cmp::Ordering;
 use rand::Rng;
 
 fn main() {
@@ -17,5 +18,14 @@ fn main() {
     io::stdin().read_line(&mut palpite)
         .expect("Falha ao ler entrada");
 
+    let palpite: u32 = palpite.trim().parse()
+        .expect("Por favor, informe um número");
+
     println!("O seu palpite é {}", palpite);
+
+    match palpite.cmp(&numero_secreto) {
+        Ordering::Less => println!("Muito baixo!"),
+        Ordering::Greater => println!("Muito alto!"),
+        Ordering::Equal => println!("Você acertou!"),
+    }
 }
